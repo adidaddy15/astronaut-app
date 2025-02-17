@@ -56,7 +56,7 @@ export class StarlinkComponent implements OnInit {
   onScroll(event: any): void {
     const bottom =
       event.target.documentElement.scrollHeight ===
-      event.target.documentElement.scrollTop + window.innerHeight;
+      Math.round(event.target.documentElement.scrollTop + window.innerHeight);
     if (
       bottom &&
       this.page * this.pageSize <= this.filteredStarlinkSatellites.length
