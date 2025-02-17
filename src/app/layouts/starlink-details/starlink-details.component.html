@@ -1,0 +1,23 @@
+@if (launchDetails) {
+  <div class="pb-8 text-left text-2xl font-semibold leading-8">
+    {{ launchDetails.name }} details
+  </div>
+  <div class="rounded-xl border border-border-secondary p-6">
+    <div class="flex flex-col">
+      <span class="pt-4 text-sm font-semibold">Success</span>
+      <span class="text-sm">{{ launchDetails.success ? "Yes" : "No" }}</span>
+      <span class="pt-4 text-sm font-semibold">Launch date</span>
+      <span class="text-sm">{{
+        launchDetails.date_utc | date: "dd-MM-yyy"
+      }}</span>
+      <span class="pt-4 text-sm font-semibold"
+        >Combined mass of all payloads (kg)</span
+      >
+      <span class="text-sm">{{ combinedMass }}</span>
+      <span class="pt-4 text-sm font-semibold">Details</span>
+      <span class="text-sm">{{ launchDetails.details }}</span>
+      <span class="pt-4 text-sm font-semibold">Last core update</span>
+      <span class="text-sm">{{ coreMessage ?? "" }}</span>
+    </div>
+  </div>
+}

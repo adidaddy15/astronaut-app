@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "@fontsource/poppins";
+@import "@fontsource/inter";
+
+body {
+  @apply font-sans;
+}
+
+/* Zanim użyłem tailwinda wystylowałem własny secondary-button */
+/*.button-secondary {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  background: #FFF;
+  border: 1px solid #D0D5DD;
+  border-radius: 8px;
+  padding: 10px 16px;
+  color: #344054;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+
+  &:hover {
+    background: #F3F4F6;
+  }
+}*/

@@ -1,0 +1,70 @@
+<div class="text-center">
+  <div class="pb-8 text-left text-2xl font-semibold leading-8">
+    Starlink stats
+  </div>
+  <div class="pb-2 text-lg font-semibold">Divisible:</div>
+  <div class="mb-8 flex w-full justify-between border-b">
+    @for (tab of tabs; track tab; let i = $index) {
+      <button
+        (click)="filterStarlinkSatellites(i); activeTab = i"
+        [ngClass]="{
+          'border-b': activeTab === i,
+          'border-blue-500': activeTab === i,
+          'text-blue-500': activeTab === i,
+        }"
+        class="w-auto px-4 py-2 text-sm font-semibold hover:text-blue-500 focus:outline-none"
+      >
+        {{ tab }}
+      </button>
+    }
+  </div>
+</div>
+
+<table class="w-full table-auto border-collapse text-sm">
+  <thead>
+    <tr>
+      <th class="max-w-40 border-b border-gray-200 pb-3 pl-0 text-center">
+        Starlink id
+      </th>
+      <th class="border-b border-gray-200 pb-3 pl-0 text-center">
+        Creation date
+      </th>
+      <th class="border-b border-gray-200 pb-3 pl-0 text-center">
+        Country code
+      </th>
+      <th class="border-b border-gray-200 pb-3 pl-0 text-center">
+        Height (km)
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (starlink of pagedStarlinkSatellites; track starlink) {
+      <tr
+        class="cursor-pointer hover:bg-bg-secondary"
+        [routerLink]="starlink.id"
+      >
+        <td
+          [title]="starlink.id"
+          class="max-w-40 table-auto overflow-hidden text-ellipsis border-b border-gray-100 pb-4 pl-0 pt-4 text-center text-gray-500"
+        >
+          {{ starlink.id }}
+        </td>
+        <td
+          class="border-b border-gray-100 pb-4 pl-0 pt-4 text-center text-gray-500"
+        >
+          {{ starlink.spaceTrack.CREATION_DATE | date: "dd-MM-yyy" }}
+        </td>
+        <td
+          class="border-b border-gray-100 pb-4 pl-0 pt-4 text-center text-gray-500"
+        >
+          {{ starlink.spaceTrack.COUNTRY_CODE }}
+        </td>
+        <td
+          class="border-b border-gray-100 pb-4 pl-0 pt-4 text-center text-gray-500"
+        >
+          {{ starlink.height_km ? Math.round(starlink.height_km) : "-" }}
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

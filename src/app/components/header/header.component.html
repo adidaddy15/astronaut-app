@@ -1,0 +1,94 @@
+<header class="sticky top-0 z-50 bg-white md:static md:bg-bg-secondary">
+  @if (isNavbarVisible) {
+    <div
+      class="absolute left-0 top-full h-auto w-full rounded-lg bg-white shadow-lg"
+      (click)="toggleNavbar()"
+    >
+      <hr />
+      <a
+        [routerLink]="[crewMember.id, 'profile']"
+        class="block px-4 py-2 text-center hover:bg-gray-100"
+        >Profile</a
+      >
+      <hr />
+      <a
+        [routerLink]="[crewMember.id, 'starlink']"
+        class="block px-4 py-2 text-center hover:bg-gray-100"
+        >Starlink stats</a
+      >
+    </div>
+  }
+  <nav class="py-4 md:px-20 md:py-[18px]">
+    <div class="flex justify-between pl-4 pr-3 md:px-8">
+      <img
+        class="hidden cursor-pointer lg:block"
+        [src]="'assets/icons/switch-together-lg.svg'"
+        alt="Logo"
+        width="330"
+        height="32"
+        [routerLink]="[crewMember.id, 'profile']"
+      />
+      <img
+        class="block cursor-pointer lg:hidden"
+        [src]="'assets/icons/switch-together-sm.svg'"
+        alt="Logo"
+        width="165"
+        height="38"
+        [routerLink]="[crewMember.id, 'profile']"
+      />
+      <img
+        id="navbar"
+        (click)="toggleNavbar()"
+        class="block rounded-full hover:bg-bg-secondary md:hidden"
+        [src]="'assets/icons/nav-menu-button.svg'"
+        alt="Navigation menu button"
+        width="40"
+        height="40"
+      />
+      <div class="hidden gap-3 md:flex">
+        <button
+          class="flex items-center gap-1.5 rounded-lg border border-button-secondary-border bg-button-secondary-bg px-4 py-2.5 text-base font-semibold leading-6 text-button-secondary-fg shadow-sm hover:bg-gray-100"
+        >
+          <img
+            class="logo"
+            [src]="'assets/icons/help-circle.svg'"
+            alt="Help-icon"
+          />
+          Help
+        </button>
+        <div
+          id="menu-dropdown"
+          class="relative flex cursor-pointer items-center"
+        >
+          <button (click)="toggleMenu()">
+            <div class="flex items-center gap-2.5">
+              <div
+                class="h-8 w-8 flex-none overflow-hidden rounded-full bg-cover text-center"
+                [style.backgroundImage]="'url(' + crewMember.image + ')'"
+                title="Crew member's photo"
+              ></div>
+              <span class="text-sm font-semibold">{{ crewMember.name }}</span>
+            </div>
+          </button>
+          @if (isMenuVisible) {
+            <div
+              class="absolute left-0 top-full rounded-lg bg-white shadow-lg"
+              (click)="toggleMenu()"
+            >
+              <a
+                [routerLink]="[crewMember.id, 'profile']"
+                class="block px-4 py-2 hover:bg-gray-100"
+                >Profile</a
+              >
+              <a
+                [routerLink]="[crewMember.id, 'starlink']"
+                class="block px-4 py-2 hover:bg-gray-100"
+                >Starlink stats</a
+              >
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
